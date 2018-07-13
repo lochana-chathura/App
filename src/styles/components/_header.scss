@@ -1,0 +1,11 @@
+.header{
+    background:lightgray;
+    color: white;
+    margin-bottom: $l-size; //48px gap between header and body
+    padding: $m-size 0; //16px space above and below the elements, 0px space left and right
+}
+
+.header__title{
+    font-size: $l-size;
+    margin: 0; //0px from top,bottom.left,right
+}
