@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {removeProject} from '../actions/projects';
+import moment from 'moment';
 
 const ProjectListItem = ({ dispatch,id,name, description,cost,note,createdAt }) => (
     <tr>
@@ -9,7 +10,7 @@ const ProjectListItem = ({ dispatch,id,name, description,cost,note,createdAt }) 
       <td>{description}</td>
       <td>{cost}</td>
       <td>{note}</td>
-      <td>{createdAt}</td>
+      <td>{moment(createdAt).format("DD MMM YYYY hh:mm a")}</td>
       <td>
       <div className="a">
         <button className="edit-button"><Link to={`/edit/${id}`}>EDIT</Link></button>

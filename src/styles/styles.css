@@ -39,7 +39,7 @@ tr:nth-child(even) {
   justify-content: space-between; }
 
 .container {
-  max-width: 80rem;
+  max-width: 90rem;
   padding: 0 1.6rem; }
 
 .main-button {

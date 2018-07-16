@@ -10,6 +10,7 @@
     "react-addons-shallow-compare": "^15.6.2",
     "react-dates": "^17.0.0",
     "react-dom": "^16.4.1",
+    "react-form": "^3.5.6",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
