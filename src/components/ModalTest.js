@@ -3,12 +3,11 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
+//import { Form, Text, Radio, RadioGroup, TextArea, Checkbox } from 'react-form';
 import { Button } from 'semantic-ui-react';
+import Modal from 'react-modal';
 
-const now = moment();
-console.log(now.format('MMM Do, YYYY'));
-
-export default class ProjectForm extends React.Component {
+export default class ModalTest extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,8 +17,26 @@ export default class ProjectForm extends React.Component {
             note: props.project ? props.project.note : '',
             createdAt: props.project ? moment(props.project.createdAt) : moment(),
             calendarFocused: false,
-            error: ''
+            error: '',
         };
+
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+
+    }
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
     }
 
     onNameChange = (e) => {
