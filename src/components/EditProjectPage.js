@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProjectForm from './ProjectForm';
+import ProjectForm2 from './ProjectForm2';
 import { editProject } from '../actions/projects';
 
 const EditProjectPage = (props) => {
     console.log(props)
     return (
         <div>
-            <ProjectForm
+        <h1>Edit Project</h1>
+            <ProjectForm2
                 project={props.project}
                 onSubmit={(project) => {
                     props.dispatch(editProject(props.project.id,project));
