@@ -6,7 +6,7 @@ import moment from 'moment';
 import { Button } from 'semantic-ui-react';
 //import { Button } from 'react-bootstrap';
 
-const ProjectListItem = ({show,dispatch,id,name, description,cost,note,createdAt }) => (
+const ProjectListItem = ({handleEditShow,handleClose,dispatch,id,name, description,cost,note,createdAt }) => (
     <tr>
       <td>{name}</td>
       <td>{description}</td>
@@ -15,7 +15,7 @@ const ProjectListItem = ({show,dispatch,id,name, description,cost,note,createdAt
       <td>{moment(createdAt).format("DD MMM YYYY hh:mm a")}</td>
       <td>
       <div className="a">
-        <Button className="edit-button"><Link to={`/edit/${id}`}>EDIT</Link></Button>
+        <Button className="edit-button" onClick={()=>handleEditShow({id,name, description,cost,note,createdAt})}>EDIT</Button>
         <Button secondary className="remove-button" 
         onClick={()=>{
           dispatch(removeProject({id}));

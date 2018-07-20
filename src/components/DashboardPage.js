@@ -1,31 +1,65 @@
 import React, { Component } from 'react';
 import ProjectList from './ProjectList';
 import ProjectForm3 from './ProjectForm3';
+import { connect } from 'react-redux';
+import { addProject } from '../actions/projects';
+import { editProject } from '../actions/projects';
 
 class DashboardPage extends Component {
     constructor(props) {
         super(props);
-        this.handleShow=this.handleShow.bind(this);
-        this.handleClose=this.handleClose.bind(this);
+        this.handleAddShow = this.handleAddShow.bind(this);
+        this.handleEditShow = this.handleEditShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
         this.state = {
-            show: false
+            show: false,
+            type: undefined,
+            project:undefined
         };
     }
-    handleShow(){
-        this.setState({ show: true });
+    handleAddShow() {
+        this.setState(()=>{
+            return { 
+                show: true, 
+                type: "add",
+                project:undefined
+            };
+        });
     }
-    handleClose(){
+    handleEditShow(project) {
+        this.setState(()=>{
+            return { 
+                show: true, 
+                type: "edit",
+                project: project
+            };
+        });
+    }
+    handleClose() {
         this.setState({ show: false });
     }
     render() {
         return (
             <div className="container">
                 DashboardPage
-            <ProjectList handleShow={this.handleShow} handleClose={this.handleClose} />
-            <ProjectForm3 show={this.state.show} handleClose={this.handleClose} />
+            <ProjectList handleAddShow={this.handleAddShow} handleEditShow={this.handleEditShow} handleClose={this.handleClose} />
+                <ProjectForm3
+                    show={this.state.show}
+                    type={this.state.type}
+                    handleClose={this.handleClose}
+                    onSubmit={(project) => {
+                        if (this.state.type==="add"){
+                            this.props.dispatch(addProject(project));
+                        }else if (this.state.type ==="edit"){
+                            this.props.dispatch(editProject(this.state.project.id,project));
+                        }
+                        this.props.history.push('/');
+                    }}
+                    project={this.state.project}
+                    />
             </div>
         )
     }
 }
 
-export default DashboardPage;
+export default connect()(DashboardPage);

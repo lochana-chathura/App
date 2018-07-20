@@ -13,16 +13,12 @@ export default class ProjectForm3 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.project ? props.project.name : '',
-            description: props.project ? props.project.description : '',
-            cost: props.project ? (props.project.cost).toString() : '',
-            note: props.project ? props.project.note : '',
             createdAt: props.project ? moment(props.project.createdAt) : moment(),
             calendarFocused: false,
             error: '',
         };
     }
-    
+
     onDateChange = (createdAt) => {
         if (createdAt) {
             this.setState(() => ({ createdAt }));
@@ -33,7 +29,6 @@ export default class ProjectForm3 extends React.Component {
     };
 
     onSubmitClick = (submittedValues) => {
-        console.log(submittedValues,"RR");
         if (!submittedValues.name || !submittedValues.description || !submittedValues.cost) {
             this.setState(() => ({ error: 'Please provide name,description and cost' }));
         } else {
@@ -42,19 +37,21 @@ export default class ProjectForm3 extends React.Component {
                 ...submittedValues,
                 createdAt: this.state.createdAt.valueOf()
             });
+            this.props.handleClose();
         }
+        
     }
     render() {
         return (
             <div>
                 <Modal show={this.props.show} onHide={this.props.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>ADD NEW PROJECT</Modal.Title>
+                        <Modal.Title>{this.props.type==="add" ? "ADD NEW PROJECT":"EDIT PROJECT"}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         {this.state.error && <p>{this.state.error}</p>}
                         <Form
-                            onSubmit={submittedValues => this.onSubmitClick(submittedValues)} defaultValues={this.state}>
+                            onSubmit={submittedValues => this.onSubmitClick(submittedValues)} defaultValues={this.props.project}>
                             {(formApi) => (
                                 <form onSubmit={formApi.submitForm} id="projectForm" className="projectForm">
                                     <p>

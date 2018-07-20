@@ -13,7 +13,7 @@ class ProjectList extends Component {
             <div>
                 <div className='project-list-header'>
                     <h1>Project List</h1>
-                    <Button className='main-button' onClick={this.props.handleShow}>Add New Project</Button>
+                    <Button className='main-button' onClick={this.props.handleAddShow}>Add New Project</Button>
                 </div>
                 <table>
                     <thead>
@@ -28,7 +28,7 @@ class ProjectList extends Component {
                     </thead>
                     <tbody>
                         {this.props.projects.map((project) => {
-                            return <ProjectListItem key={project.id} show={this.props.show} {...project} />
+                            return <ProjectListItem key={project.id} handleEditShow={this.props.handleEditShow} handleClose={this.props.handleClose} {...project} />
                         })}
                     </tbody>
                 </table>
