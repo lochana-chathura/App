@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {removeProject} from '../actions/projects';
 import moment from 'moment';
 import { Button } from 'semantic-ui-react';
+//import { Button } from 'react-bootstrap';
 
-
-const ProjectListItem = ({dispatch,id,name, description,cost,note,createdAt }) => (
+const ProjectListItem = ({show,dispatch,id,name, description,cost,note,createdAt }) => (
     <tr>
       <td>{name}</td>
       <td>{description}</td>

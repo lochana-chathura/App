@@ -6,6 +6,7 @@ import 'react-dates/initialize';
 import { Button } from 'semantic-ui-react';
 import { Form, Text, TextArea } from 'react-form';
 
+
 const now = moment();
 console.log(now.format('MMM Do, YYYY'));
 export default class ProjectForm2 extends React.Component {
