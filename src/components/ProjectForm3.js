@@ -7,8 +7,8 @@ import { Button } from 'semantic-ui-react';
 import { Form, Text, TextArea } from 'react-form';
 import { Modal } from 'react-bootstrap';
 
-const now = moment();
-console.log(now.format('MMM Do, YYYY'));
+// const now = moment();
+// console.log(now.format('MMM Do, YYYY'));
 export default class ProjectForm3 extends React.Component {
     constructor(props) {
         super(props);

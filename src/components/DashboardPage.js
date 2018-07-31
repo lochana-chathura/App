@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ProjectList from './ProjectList';
 import ProjectForm3 from './ProjectForm3';
+import ProjectForm4 from './ProjectForm4';
 import { connect } from 'react-redux';
-import { addProject } from '../actions/projects';
+import { startAddProject } from '../actions/projects';
 import { editProject } from '../actions/projects';
 
 class DashboardPage extends Component {
@@ -38,6 +39,12 @@ class DashboardPage extends Component {
     handleClose() {
         this.setState({ show: false });
     }
+
+    componentDidMount() {
+        const url = 'http://localhost:55300/api/projects'
+        fetch(url).then(data=>console.log(data),"DATA");
+     }
+    
     render() {
         return (
             <div className="container">
@@ -49,12 +56,13 @@ class DashboardPage extends Component {
                     handleClose={this.handleClose}
                     onSubmit={(project) => {
                         if (this.state.type==="add"){
-                            this.props.dispatch(addProject(project));
+                            this.props.dispatch(startAddProject(project));
                         }else if (this.state.type ==="edit"){
                             this.props.dispatch(editProject(this.state.project.id,project));
                         }
                         this.props.history.push('/');
                     }}
+                    //onSubmit={(values)=>console.log(values)}
                     project={this.state.project}
                     />
             </div>
