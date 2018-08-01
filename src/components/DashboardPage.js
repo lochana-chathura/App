@@ -5,6 +5,8 @@ import ProjectForm4 from './ProjectForm4';
 import { connect } from 'react-redux';
 import { startAddProject } from '../actions/projects';
 import { editProject } from '../actions/projects';
+//import axios from 'axios';
+
 
 class DashboardPage extends Component {
     constructor(props) {
@@ -41,8 +43,11 @@ class DashboardPage extends Component {
     }
 
     componentDidMount() {
-        const url = 'http://localhost:55300/api/projects'
-        fetch(url).then(data=>console.log(data),"DATA");
+
+    //     axios.get(`http://localhost:55300/api/projects/1`)
+    //   .then(res => {
+    //     const persons = res.data;
+    //     console.log(persons,"DATA");})
      }
     
     render() {

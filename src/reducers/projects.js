@@ -22,7 +22,7 @@ const projectsReducer = (state = projectsReducerDefaultState, action) => {
           return project;
         };
       });
-    case 'SET_EXPENSES':
+    case 'SET_PROJECTS':
       return action.projects;
     default:
       return state;

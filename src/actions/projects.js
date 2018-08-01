@@ -1,5 +1,7 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import axios from 'axios';
+
 // ADD_PROJECT
 export const addProject = (project) => ({
   type: 'ADD_PROJECT',
@@ -44,6 +46,25 @@ export const setProjects=(projects)=>({
   projects
 });
 
+// export const startSetProjects=()=>{
+//   return (dispatch)=>{
+//     axios.get(`http://localhost:55300/api/projects`)
+//     .then(res => {
+//     const projectsArray = res.data;
+//     console.log(persons,"DATA");})
+//       return {}
+        
+//     //   });
+//     //   dispatch(setProjects(projects));
+//     // });
+//   };
+// }; 
+
+//     axios.get(`http://localhost:55300/api/projects/1`)
+    //   .then(res => {
+    //     const persons = res.data;
+    //     console.log(persons,"DATA");})
+
 export const startSetProjects=()=>{
   return (dispatch)=>{
     return database.ref('projects').once('value').then((snapshot)=>{
@@ -53,6 +74,7 @@ export const startSetProjects=()=>{
           id:childSnapshot.key,
           ...childSnapshot.val()
         });
+        
       });
       dispatch(setProjects(projects));
     });
