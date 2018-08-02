@@ -41,14 +41,6 @@ class DashboardPage extends Component {
     handleClose() {
         this.setState({ show: false });
     }
-
-    componentDidMount() {
-
-    //     axios.get(`http://localhost:55300/api/projects/1`)
-    //   .then(res => {
-    //     const persons = res.data;
-    //     console.log(persons,"DATA");})
-     }
     
     render() {
         return (

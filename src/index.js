@@ -9,9 +9,12 @@ import ProjectForm3 from './components/ProjectForm3';
 import { startSetProjects } from './actions/projects';
 
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
-store.dispatch(startSetProjects()).then(()=>{
-    ReactDOM.render(jsx, document.getElementById('root'));
-});
+ReactDOM.render(jsx, document.getElementById('root'));
+store.dispatch(startSetProjects());
+//ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+//store.dispatch(startSetProjects());
+// store.dispatch(startSetProjects()).then(()=>{
+//     ReactDOM.render(jsx, document.getElementById('root'));
+// });
 
 registerServiceWorker();
